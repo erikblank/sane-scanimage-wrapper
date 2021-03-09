@@ -11,19 +11,19 @@ function addOptions(args, opts) {
     }, args);
 }
 
-Scanner.prototype.scan = function(options) {
-    let opts = Object.assign({}, { format: 'png'},  options);
+Scanner.prototype.scan = function (options) {
+    let opts = Object.assign({}, { format: 'png' }, options);
     let args = [];
     if (this.device) {
         opts.device = this.device.name;
     }
     addOptions(args, opts);
     let scanimage = processes.spawn('scanimage', args);
-    return scanimage.stdout;
+    return scanimage;
 }
 
 module.exports = {
-    listDevices : () => {
+    listDevices: () => {
         return new Promise((resolve, reject) => {
             let result = '';
             let scanimage = processes.spawn('scanimage', ['--formatted-device-list={"name":"%d", "vendor":"%v","model":"%m","type":"%t","index":"%i"}%n']);
