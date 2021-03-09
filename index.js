@@ -18,7 +18,7 @@ Scanner.prototype.scan = function (options) {
         opts.device = this.device.name;
     }
     addOptions(args, opts);
-    let scanimage = processes.spawn('scanimage', args);
+    let scanimage = processes.spawn('scanimage', args, {shell: true});
     return scanimage;
 }
 
