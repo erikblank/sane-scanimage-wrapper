@@ -19,7 +19,7 @@ Scanner.prototype.scan = function (options) {
     }
     addOptions(args, opts);
     let scanimage = processes.spawn('scanimage', args, {shell: true});
-    return scanimage;
+    return scanimage.stdout;
 }
 
 module.exports = {
